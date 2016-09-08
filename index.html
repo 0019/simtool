@@ -16,6 +16,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		
 		<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+		<script src="framework/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
 	</head>
 	
 	<body class="noselect">
@@ -32,26 +33,21 @@
 				<button type="button" class="btn btn-sm" id="room">Confirm</button>
 			</div>
 			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-7">Box width: </div>
-					<div class="col-md-5"><input id="bw" type="number"></input></div>
+				<p><i>format of box size: <br />length, width, height, <br />separated by a whitespace.</i></p>
+				<div id="box_logger">
+					<div class="row">
+						<div class="col-md-5">Box size: </div>
+						<div class="col-md-7"><input id="dim" type="text" placeholder="eg: 1 1 1"></input></div>
+					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-7">Box length: </div>
-					<div class="col-md-5"><input id="bl" type="number"></input></div>
-				</div>
-				<div class="row">
-					<div class="col-md-7">Box height: </div>
-					<div class="col-md-5"><input id="bh" type="number"></input></div>
-				</div>
-				<button type="button" class="btn btn-sm" id="box">Add Box</button>
+				<button type="button" class="btn btn-sm" id="add">Add Box</button>
 			</div>
 		</div>
 		<a-scene id="scene">
 			<a-plane id="floor" color="#6173F4" opacity="0.8" height="20" width="17" rotation="-90 0 0"></a-plane>
 			<a-sky color="#ECECEC"></a-sky>
 			<a-entity>
-				<a-entity camera="userHeight: 1.8" wasd-controls look-controls></a-entity>
+				<a-entity id="camera" camera="userHeight: 1.8" rotation="0 0 0" wasd-controls mouse-cursor></a-entity>
 			</a-entity>
 		</a-scene>
 		<script src="js/script.js"></script>
