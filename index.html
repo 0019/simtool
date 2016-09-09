@@ -32,7 +32,7 @@
 				</div>
 				<button type="button" class="btn btn-sm" id="room">Confirm</button>
 			</div>
-			<div class="container-fluid">
+			<div class="container-fluid section">
 				<p><i>format of box size: <br />length, width, height, <br />separated by a whitespace.</i></p>
 				<div id="box_logger">
 					<div class="row">
@@ -42,13 +42,40 @@
 				</div>
 				<button type="button" class="btn btn-sm" id="add">Add Box</button>
 			</div>
+			<div class="container-fluid section">
+				<div class="row">
+					<button type="button" class="btn" id="audi">Auditorium</button>
+				</div>
+				<div class="row">
+					<button type="button" class="btn" id="badm">Badminton Court</button>
+				</div>
+			</div>
+			<div class="container-fluid section">
+				<div class="checkbox" id="showRealScene">
+					<label><input type="checkbox" value="true">Show real scene</label>
+				</div>
+				<p>
+				</p>
+			</div>
 		</div>
 		<a-scene id="scene">
-			<a-plane id="floor" color="#6173F4" opacity="0.8" height="20" width="17" rotation="-90 0 0"></a-plane>
+			<a-plane id="floor" color="#6173F4" opacity="0.8" height="20" width="17" position="0 0 0" rotation="-90 0 0"></a-plane>
 			<a-sky color="#ECECEC"></a-sky>
 			<a-entity>
-				<a-entity id="camera" camera="userHeight: 1.8" rotation="0 0 0" wasd-controls mouse-cursor></a-entity>
+				<a-entity id="camera" camera="userHeight: 1.8" position="0 0 5" rotation="0 0 0" wasd-controls>
+					<a-cursor></a-cursor>
+				</a-entity>
 			</a-entity>
+			<a-entity id="grids">
+			</a-entity>
+			<a-entity id="boxes">
+			</a-entity>
+			<a-entity id="frames">
+			</a-entity>
+			<!--
+			<a-sky id="sky_audi" src="audi.jpg" visible=true rotation="0 -94 -2" radius="18" position="0 1.8 4"></a-sky>
+			<a-sky id="sky_badm" src="badm.jpg" visible=false rotation="0 -94 -2" radius="18" position="0 1.8 4"></a-sky>
+			-->
 		</a-scene>
 		<script src="js/script.js"></script>
 	</body>
