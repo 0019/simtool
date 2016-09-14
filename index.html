@@ -44,26 +44,53 @@
 			</div>
 			<div class="container-fluid section">
 				<div class="row">
-					<button type="button" class="btn" id="audi">Auditorium</button>
+					<button type="button" class="btn directory" id="audi">Auditorium</button>
 				</div>
 				<div class="row">
-					<button type="button" class="btn" id="badm">Badminton Court</button>
+					<button type="button" class="btn directory" id="badm">Badminton Court</button>
+				</div>
+				<div class="row">
+					<button type="button" class="btn directory" id="shakes">Shakespheare</button>
+				</div>
+				<div class="row">
+					<button type="button" class="btn directory" id="omar">Omar Khayam</button>
 				</div>
 			</div>
 			<div class="container-fluid section">
-				<div class="checkbox" id="showRealScene">
-					<label><input type="checkbox" value="true">Show real scene</label>
+				<div class="row">
+					<div class="col-md-6">Number of people: </div>
+					<div class="col-md-6"><input id="num_ppl" type="number"></input></div>
 				</div>
-				<p>
-				</p>
+				<button type="button" class="btn btn-sm" id="populate">Populate</button>
+			</div>
+			<div class="container-fluid section">
+				<div class="row">
+					<div class="col-md-12">
+						Controls:<br />
+						w: forward<br />
+						s: backward<br />
+						a: left<br />
+						d: right<br />
+						q: up<br />
+						e: down
+					</div>
+				</div>
 			</div>
 		</div>
 		<a-scene id="scene">
+			<a-assets>
+			<!--
+				<a-asset-item id="model" src="res/man.dae"></a-asset-item>
+				<a-asset-item id="talia" src="res/Talia.dae"></a-asset-item>
+			-->
+				<a-asset-item id="spiderman" src="res/Spider-Man.obj"></a-asset-item>
+				<a-asset-item id="spidermanmtl" src="res/Spider-Man.mtl"></a-asset-item>
+			</a-assets>
 			<a-plane id="floor" color="#6173F4" opacity="0.8" height="20" width="17" position="0 0 0" rotation="-90 0 0"></a-plane>
 			<a-sky color="#ECECEC"></a-sky>
 			<a-entity>
 				<a-entity id="camera" camera="userHeight: 1.8" position="0 0 5" rotation="0 0 0" wasd-controls>
-					<a-cursor></a-cursor>
+					<a-cursor color="green"></a-cursor>
 				</a-entity>
 			</a-entity>
 			<a-entity id="grids">
@@ -71,6 +98,8 @@
 			<a-entity id="boxes">
 			</a-entity>
 			<a-entity id="frames">
+			</a-entity>
+			<a-entity id="people">
 			</a-entity>
 			<!--
 			<a-sky id="sky_audi" src="audi.jpg" visible=true rotation="0 -94 -2" radius="18" position="0 1.8 4"></a-sky>

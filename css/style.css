@@ -20,7 +20,7 @@
 	float: right;
 }
 
-#add, #room {
+#add, #room, #populate {
 	width: 35%;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -29,7 +29,7 @@
 	float: right;
 }
 
-#audi, #badm {
+button.directory {
 	width: 90%;
 	margin-top: 10px;
 	margin-bottom: 10px;
