@@ -100,11 +100,17 @@ var badm_settings =
 
 $('#audi').click(function() {
 	$('#boxes').html(audi_settings);
+	envRotation = -90;
+	var y = $('#camera').attr('rotation').y;
+	rotateCompass(y);
 	changeRoomSize(18, 17);
 });
 
 $('#badm').click(function() {
 	$('#boxes').html(badm_settings);
+	envRotation = -90;
+	var y = $('#camera').attr('rotation').y;
+	rotateCompass(y);
 	changeRoomSize(18.3, 13.4);
 });
 
@@ -166,6 +172,7 @@ $('body').on('keydown', function(e) {
 });
 
 function start() {
+	rotateCompass(0);
 	changeRoomSize(20, 17);
 	gridsUp(20, 17);
 	framesUp(20, 17);
@@ -178,6 +185,12 @@ function start() {
 	document.addEventListener('mozpointerlockchange', lockChangeHandler, false);
 }
 
+function rotateCompass(deg) {
+	var compass = document.getElementById('compass');
+	deg += envRotation;
+	compass.style.webkitTransform = 'rotate(' + deg + 'deg)';
+}
+
 function canvasLoop(event) {
 	var rotation = $('#camera').attr('rotation');
 	var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
@@ -185,6 +198,7 @@ function canvasLoop(event) {
 	var y = parseFloat(rotation.y) - movementX * 0.12;
 	var x = parseFloat(rotation.x) - movementY * 0.12;
 	x = Math.max( -90, Math.min(90, x) );
+	rotateCompass(y);
 	$('#camera').attr('rotation', x + ' ' + y + ' ' + rotation.z);
 }
 
@@ -224,6 +238,7 @@ function framesUp(length, width) {
 }
 
 var element, length, width;
+var envRotation = 0;
 start();
 
 /* -------------------------------------------Call For An Army--------------------------------------------------- */
