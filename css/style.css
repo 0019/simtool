@@ -36,6 +36,9 @@
 	top: 58px;
 	height: 45px;
 	-webkit-Transform: rotate(132deg);
+	-moz-Transform: rotate(132deg);
+	-ms-Transform: rotate(132deg);
+	transform: rotate(132deg);
 	z-index: 12;
 }
 
@@ -63,6 +66,17 @@ button.directory {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	border: 2px solid transparent;
+}
+
+button.focused {
+	background-color:white;
+	border: 2px solid red;
+	font-weight: bold;
+}
+
+button:focus {
+	outline: none !important;
 }
 
 .section {
