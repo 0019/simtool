@@ -18,6 +18,15 @@ var audi_settings =
 	'<a-box class="box" color="pink" position="0 1.225 -1.75" depth="3.5" height="2.45" width="3.5"></a-box>' +
 	'<a-plane color="#AAA" position="-7.5 1.05 -9" width="2" height="2.1"></a-plane>' +
 	'<a-plane color="#AAA" position="7.5 1.05 -9" width="2" height="2.1"></a-plane>' +
+	//labels
+	'<a-plane mixin="table_label" position="-' + audi_left_center + ' 0.81 -' + audi_mid_top + '" material="src:#alu"></a-plane>' +
+	'<a-plane mixin="table_label" position="-' + audi_left_center + ' 0.81 0" material="src:#alm"></a-plane>' +
+	'<a-plane mixin="table_label" position="-' + audi_left_center + ' 0.81 ' + audi_mid_top + '" material="src:#all"></a-plane>' +
+	'<a-plane mixin="table_label" position="' + audi_left_center + ' 0.81 -' + audi_mid_top + '" material="src:#aru"></a-plane>' +
+	'<a-plane mixin="table_label" position="' + audi_left_center + ' 0.81 0" material="src:#arm"></a-plane>' +
+	'<a-plane mixin="table_label" position="' + audi_left_center + ' 0.81 ' + audi_mid_top + '" material="src:#arl"></a-plane>' +
+	'<a-plane mixin="table_label" position="0 2.46 -1.75" material="src:#ac"></a-plane>' +
+	'<a-plane geometry="width:2.45 height:2.45" position="0 1.225 0.1" material="src:#ac"></a-plane>' +
 	//chair left
 	fiveChairs(-audi_left_left, audi_mid_top, 90) +
 	fiveChairs(-audi_left_left, 0, 90) +
@@ -58,6 +67,19 @@ var badm_settings =
 	'<a-plane color="#AAA" position="6.7 1.05 5.5" width="2" height="2.1" rotation="0 -90 0"></a-plane>' +
 	'<a-plane color="#AAA" position="6.7 1.05 -5.5" width="2" height="2.1" rotation="0 -90 0"></a-plane>' +
 	'<a-plane color="#AAA" position="-6.7 1.05 0" width="2" height="2.1" rotation="0 90 0"></a-plane>' +
+	//labels
+	'<a-plane mixin="table_label" position="' + badm_right_right + ' 0.81 0" material="src:#alm"></a-plane>' +
+	'<a-plane mixin="table_label" position="' + badm_right_right + ' 0.81 ' + String(-badm_center_z) + '" material="src:#aru"></a-plane>' +
+	'<a-plane mixin="table_label" position="' + badm_right_right + ' 0.81 ' + badm_center_z + '" material="src:#arm"></a-plane>' +
+	'<a-plane mixin="table_label_rotated" position="' + badm_upper_right + ' 0.81 ' + badm_upper_z + '" material="src:#all"></a-plane>' +
+	'<a-plane mixin="table_label_rotated" position="' + badm_upper_mid + ' 0.81 ' + badm_upper_z + '" material="src:#alu"></a-plane>' +
+	'<a-plane mixin="table_label" position="' + String(-badm_right_right) + ' 0.81 -2" material="src:#arl"></a-plane>' +
+	'<a-plane geometry="width:2.45 height:2.45" position="-3.19 1.2 -6.75" rotation="0 90 0" material="src:#ac"></a-plane>' +
+	'<a-plane geometry="width:2.45 height:2.45" position="-4.95 1.2 -4.9" material="src:#ac"></a-plane>' +
+	//labels
+	'<a-plane geometry="width:3.2 height:2.45" position="-4.2 0.25 6.65" rotation="-90 180 0" material="src:#sa"></a-plane>' +
+	'<a-plane geometry="width:1.6 height:0.5" position="-5.7 0.25 3" rotation="-90 180 0" material="src:#qa"></a-plane>' +
+	'<a-plane geometry="width:1.8 height:0.8" position="0 0.25 8" rotation="-90 180 0" material="src:#pb"></a-plane>' +
 	//chair right
 	coupleChairs(badm_right_right - 0.2, badm_center_z + 0.85, 0) +
 	coupleChairs(badm_right_right - 0.2, 0.85, 0) +
@@ -92,7 +114,10 @@ var shakes_settings = table(-shakes_left_x, shakes_lower_z, 90) +
 					  fiveChairs(shakes_right_x, 0, 90) +
 					  fiveChairs(shakes_right_x, -shakes_lower_z, 90) +
 					  door(4.65, shakes_door_z, 90) +
-					  door(4.65, -shakes_door_z, 90);
+					  door(4.65, -shakes_door_z, 90) +
+					  '<a-plane mixin="table_label" position="' + String(-shakes_left_x) + ' 0.81 ' + shakes_lower_z + '" material="src:#alm"></a-plane>' +
+					  '<a-plane mixin="table_label" position="' + String(-shakes_left_x) + ' 0.81 0" material="src:#alu"></a-plane>' +
+					  '<a-plane mixin="table_label" position="' + String(-shakes_left_x) + ' 0.81 ' + String(-shakes_lower_z) + '" material="src:#aru"></a-plane>';
 
 var omar_lower_z = 1.5;
 var omar_right_x = 1.5;
@@ -105,7 +130,11 @@ var omar_settings = table(-shakes_left_x, 3 * omar_lower_z, 90) +
 				  	fiveChairs(shakes_right_x, -omar_lower_z, 90) +
 				  	door(4.65, shakes_door_z, 90) +
 				  	door(4.65, -shakes_door_z, 90) +
-					'<a-box position="-3.65 0.1 -5.2" width="2" height="0.2" depth="2" color="#ff6"></a-box>';
+					'<a-box position="-3.65 0.1 -5.2" width="2" height="0.2" depth="2" color="#ff6"></a-box>' +
+					'<a-plane mixin="table_label" position="' + String(-shakes_left_x) + ' 0.81 ' + String(3 * omar_lower_z) + '" material="src:#arl"></a-plane>' +
+					'<a-plane mixin="table_label" position="' + String(-shakes_left_x) + ' 0.81 ' + omar_lower_z + '" material="src:#all"></a-plane>' +
+					'<a-plane mixin="table_label" position="' + String(-shakes_left_x) + ' 0.81 ' + String(-omar_lower_z) + '" material="src:#arm"></a-plane>' +
+					'<a-plane mixin="table_label" position="-3.65 0.25 -5.2" material="src:#qa"></a-plane>';
 
 function fiveChairs(x, z, r) {
 	return '<a-entity rotation="0 ' + r + ' 0" position="' + x + ' ' + chair_height + ' ' + z + '">' +
@@ -213,19 +242,38 @@ $('body').on('click', function() {
 	}
 });
 
+// Listeners for vertical movements
 $('body').on('keydown', function(e) {
-	if (document.pointerLockElement === element || document.mozPointerLockElement === element) {
-		var pos = $('#camera').attr('position');
-		var x = pos.x;
-		var y = pos.y;
-		var z = pos.z;
+	if (!moving) {
 		if (e.keyCode == 81) { // q
-			y += 0.15;
+			moving = true;
+			interval = setInterval(function() {
+				var pos = $('#camera').attr('position');
+				var x = pos.x;
+				var y = pos.y;
+				var z = pos.z;
+				y += 0.03;
+				$('#camera').attr('position', x + ' ' + y + ' ' + z);
+			}, 10);
 		} else if (e.keyCode == 69) { //e
-			y -= 0.15;
+			moving = true;
+			interval = setInterval(function() {
+				var pos = $('#camera').attr('position');
+				var x = pos.x;
+				var y = pos.y;
+				var z = pos.z;
+				y -= 0.03;
+				$('#camera').attr('position', x + ' ' + y + ' ' + z);
+			}, 10);
 		}
-		$('#camera').attr('position', x + ' ' + y + ' ' + z);
-	} 
+	}
+});
+
+$('body').on('keyup', function(e) {
+	if (e.keyCode == 81 || e.keyCode == 69) {
+		moving = false;
+		clearInterval(interval);
+	}
 });
 
 function start() {
@@ -298,6 +346,8 @@ function framesUp(length, width) {
 
 var element, length, width;
 var envRotation = 0;
+var interval = null;
+var moving = false;
 start();
 
 /* -------------------------------------------Call For An Army--------------------------------------------------- */
