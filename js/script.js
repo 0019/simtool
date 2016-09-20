@@ -16,8 +16,8 @@ var audi_settings =
 	'<a-box class="box" mixin="table table_rotated" position="' + audi_left_center + ' 0.4 0"></a-box>' +
 	'<a-box class="box" mixin="table table_rotated" position="' + audi_left_center + ' 0.4 ' + audi_mid_top + '"></a-box>' +
 	'<a-box class="box" color="pink" position="0 1.225 -1.75" depth="3.5" height="2.45" width="3.5"></a-box>' +
-	'<a-plane color="#AAA" position="-7.5 1.05 -9" width="2" height="2.1"></a-plane>' +
-	'<a-plane color="#AAA" position="7.5 1.05 -9" width="2" height="2.1"></a-plane>' +
+	door(7.5, -9, 0) +
+	door(-7.5, -9, 0) +
 	//labels
 	'<a-plane mixin="table_label" position="-' + audi_left_center + ' 0.81 -' + audi_mid_top + '" material="src:#alu"></a-plane>' +
 	'<a-plane mixin="table_label" position="-' + audi_left_center + ' 0.81 0" material="src:#alm"></a-plane>' +
@@ -64,9 +64,9 @@ var badm_settings =
 	'<a-box class="box" mixin="table table_rotated" position="' + String(-badm_right_right) + ' ' + table_height + ' -2"></a-box>' +
 	'<a-box class="box" color="#fbd" position="0 0.1 8" depth="2" height="0.2" width="2"></a-box>' +
 	'<a-box class="box" color="pink" position="-4.95 1.2 -6.75" depth="3.5" height="2.45" width="3.5"></a-box>' +
-	'<a-plane color="#AAA" position="6.7 1.05 5.5" width="2" height="2.1" rotation="0 -90 0"></a-plane>' +
-	'<a-plane color="#AAA" position="6.7 1.05 -5.5" width="2" height="2.1" rotation="0 -90 0"></a-plane>' +
-	'<a-plane color="#AAA" position="-6.7 1.05 0" width="2" height="2.1" rotation="0 90 0"></a-plane>' +
+	door(6.7, 5.5, 90) +
+	door(6.7, -5.5, 90) +
+	door(-6.7, 0, 90) +
 	//labels
 	'<a-plane mixin="table_label" position="' + badm_right_right + ' 0.81 0" material="src:#alm"></a-plane>' +
 	'<a-plane mixin="table_label" position="' + badm_right_right + ' 0.81 ' + String(-badm_center_z) + '" material="src:#aru"></a-plane>' +
@@ -312,8 +312,12 @@ function canvasLoop(event) {
 function lockChangeHandler() {
 	if(document.pointerLockElement === element || document.mozPointerLockElement === element) {
 		document.addEventListener("mousemove", canvasLoop, false);
+		$('#control_panel').hide();
+		$('#compass_box').css('right', '20px');
 	} else {
 		document.removeEventListener("mousemove", canvasLoop, false);
+		$('#control_panel').show();
+		$('#compass_box').css('right', '320px');
 	}
 }
 
