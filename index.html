@@ -20,6 +20,9 @@
 	</head>
 	
 	<body class="noselect">
+		<div id="auth">
+			<input id="pwdInput" onfocus="this.placeholder = ''" placeholder="key in password, and press enter" type="password" name="pwd"></input>
+		</div>
 		<div id="compass_box">
 			<img id="arrow" src="res/arrow.png"></img>
 			<img id="compass" src="res/compass.png"></img>
@@ -68,33 +71,92 @@
 				<button type="button" class="btn btn-sm" id="populate">Populate</button>
 			</div>
 			<div class="container-fluid section">
+				Controls:<br />
+				<div class="row">
+					<div class="col-md-6">
+						w: forward
+					</div>
+					<div class="col-md-6">
+						s: backward
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						a: left
+					</div>
+					<div class="col-md-6">
+						d: right
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						q: up
+					</div>
+					<div class="col-md-6">
+						e: down
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-6">
+						c:
+					</div>
+					<div class="col-md-6">
+						clear selection
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						four arrow keys:
+					</div>
+					<div class="col-md-6">
+						move the selected
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						"<", ">":
+					</div>
+					<div class="col-md-6">
+						rotate the selected
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						"pg up", "pg down":
+					</div>
+					<div class="col-md-6">
+						move up & down
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						"end":
+					</div>
+					<div class="col-md-6">
+						put to the ground
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-md-12">
-						Controls:<br />
-						w: forward<br />
-						s: backward<br />
-						a: left<br />
-						d: right<br />
-						<b>
-						q: up<br />
-						e: down
-						</b>
+					You can always revert all changes by refreshing if you HAVE NOT saved it.
 					</div>
 				</div>
 			</div>
+			<div class="container-fluid section">
+				<div class="row">
+					<button type="button" class="btn btn-danger btn-block" id="save">Save</button>
+				</div>
+			</div>
 		</div>
-		<a-scene id="scene">
+		<a-scene debug id="scene">
 			<a-assets>
-			<!--
-				<a-asset-item id="model" src="res/man.dae"></a-asset-item>
-				<a-asset-item id="talia" src="res/Talia.dae"></a-asset-item>
-			-->
-				<a-mixin id="table" material="color: tomato" geometry="depth:1.52; height:0.8; width:0.8"></a-mixin>
-				<a-mixin id="chair" material="color: orange" geometry="depth:0.5; height:0.5; width:0.5"></a-mixin>
+				<a-mixin id="table" material="color: tomato" rotation="0 0 0" geometry="depth:1.52; height:0.8; width:0.8"></a-mixin>
+				<a-mixin id="chair" material="color: orange" rotation="0 0 0" geometry="depth:0.5; height:0.5; width:0.5"></a-mixin>
 				<a-mixin id="table_rotated" rotation="0 90 0"></a-mixin>
 				<a-mixin id="table_label" rotation="-90 0 0" geometry="height:0.8; width:1.52"></a-mixin>
 				<a-mixin id="table_label_rotated" rotation="-90 -90 0" geometry="height:0.8; width:1.52"></a-mixin>
-				<a-mixin id="door" material="color: #AAA; side: double" geometry="width:2; height:2.1"></a-mixin>
+				<a-mixin id="door" material="color: #AAA; side: double" rotation="0 0 0" geometry="width:2; height:2.1"></a-mixin>
 				<a-asset-item id="spiderman" src="res/Spider-Man.obj"></a-asset-item>
 				<a-asset-item id="spidermanmtl" src="res/Spider-Man.mtl"></a-asset-item>
 				<img src="res/labels/audi_left_upper.PNG" id="alu"></img>
@@ -104,15 +166,19 @@
 				<img src="res/labels/audi_right_mid.PNG" id="arm"></img>
 				<img src="res/labels/audi_right_lower.PNG" id="arl"></img>
 				<img src="res/labels/audi_castle.PNG" id="ac"></img>
+				<img src="res/labels/badm_castle.PNG" id="bc"></img>
 				<img src="res/labels/sa.PNG" id="sa"></img>
 				<img src="res/labels/qa.PNG" id="qa"></img>
 				<img src="res/labels/pb.PNG" id="pb"></img>
+				<img src="res/labels/omar.PNG" id="oo"></img>
+				<img src="res/labels/shakes.PNG" id="ss"></img>
+				<img src="res/labels/sp.PNG" id="sp"></img>
 			</a-assets>
 			<a-plane id="floor" color="#6173F4" opacity="0.8" height="20" width="17" position="0 0 0" rotation="-90 0 0"></a-plane>
 			<a-sky color="#ECECEC"></a-sky>
 			<a-entity>
 				<a-entity id="camera" camera="userHeight: 1.8" position="0 0 5" rotation="0 0 0" wasd-controls>
-					<a-cursor color="green"></a-cursor>
+					<a-cursor raycaster="far:30; interval: 100" color="green"></a-cursor>
 				</a-entity>
 			</a-entity>
 			<a-entity id="grids">
@@ -123,10 +189,6 @@
 			</a-entity>
 			<a-entity id="people">
 			</a-entity>
-			<!--
-			<a-sky id="sky_audi" src="audi.jpg" visible=true rotation="0 -94 -2" radius="18" position="0 1.8 4"></a-sky>
-			<a-sky id="sky_badm" src="badm.jpg" visible=false rotation="0 -94 -2" radius="18" position="0 1.8 4"></a-sky>
-			-->
 		</a-scene>
 		<script src="js/script.js"></script>
 	</body>
